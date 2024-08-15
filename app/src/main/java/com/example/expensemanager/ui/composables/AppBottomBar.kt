@@ -1,5 +1,6 @@
 package com.example.expensemanager.ui.composables
 
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -20,7 +21,7 @@ fun AppBottomBar(
     onNavigationSelected: (AppBottomBarScreen) -> Unit,
 ) {
     NavigationBar {
-        for (destination in destinations) {
+        destinations.forEach { destination ->
             val isSelected = navController.currentBackStackEntryAsState().value?.destination.isDestinationSelected(destination)
             NavigationBarItem(
                 selected = isSelected,

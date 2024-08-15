@@ -3,11 +3,14 @@ package com.example.expensemanager.ui.navigation
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.material3.DrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.expensemanager.ui.composables.screens.AccountScreen
+import com.example.expensemanager.ui.composables.screens.BackupScreen
 import com.example.expensemanager.ui.composables.screens.CalendarScreen
 import com.example.expensemanager.ui.composables.screens.HomeScreen
 import com.example.expensemanager.ui.composables.screens.SettingsScreen
@@ -35,6 +38,14 @@ fun ExpenseManagerNavHost(
 
         composable(AppBottomBarScreen.SETTINGS.route) {
             SettingsScreen()
+        }
+
+        composable(AppNavigationDrawerScreen.ACCOUNT.route) {
+            AccountScreen()
+        }
+
+        composable(AppNavigationDrawerScreen.DATA_BACKUP.route) {
+            BackupScreen()
         }
 
     }

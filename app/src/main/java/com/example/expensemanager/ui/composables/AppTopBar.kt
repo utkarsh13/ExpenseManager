@@ -61,7 +61,6 @@ fun AppTopBar(
         modifier = Modifier.shadow(
             elevation = 8.dp,
             ambientColor = Color.Black,
-            shape = RoundedCornerShape(0.dp, 0.dp, 16.dp, 16.dp)
         ),
         navigationIcon = {
             IconButton(onClick = {

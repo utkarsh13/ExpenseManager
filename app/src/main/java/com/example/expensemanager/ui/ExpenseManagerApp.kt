@@ -19,18 +19,32 @@ import com.example.expensemanager.ui.composables.AppBottomBar
 import com.example.expensemanager.ui.composables.AppNavigationDrawer
 import com.example.expensemanager.ui.composables.AppTopBar
 import com.example.expensemanager.ui.navigation.AppBottomBarScreens
-import com.example.expensemanager.ui.navigation.ExpenseManagerNavHost
+import com.example.expensemanager.ui.navigation.ParentNavHost
+import com.example.expensemanager.ui.navigation.AppNavHost
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
 fun ExpenseManagerApp(
-    navController: NavHostController,
+    parentNavController: NavHostController,
     drawerState: DrawerState,
     coroutineScope: CoroutineScope,
 ) {
+    ParentNavHost(
+        parentNavController = parentNavController,
+        drawerState = drawerState,
+        coroutineScope = coroutineScope
+    )
+}
 
+@Composable
+fun AppBase(
+    parentNavController: NavHostController,
+    drawerState: DrawerState,
+    coroutineScope: CoroutineScope,
+) {
+    val appNavController = rememberNavController()
     AppNavigationDrawer(
-        navController = navController,
+        navController = parentNavController,
         drawerState = drawerState,
         coroutineScope = coroutineScope
     ) {
@@ -39,7 +53,7 @@ fun ExpenseManagerApp(
             modifier = Modifier.fillMaxSize(),
             topBar = {
                 AppTopBar(
-                    navController = navController,
+                    navController = parentNavController,
                     drawerState = drawerState,
                     coroutineScope = coroutineScope
                 )
@@ -47,16 +61,16 @@ fun ExpenseManagerApp(
             bottomBar = {
                 AppBottomBar(
                     destinations = AppBottomBarScreens.entries,
-                    navController = navController,
+                    navController = appNavController,
                     onNavigationSelected = { destination ->
                         val topLevelNavOptions = navOptions {
-                            popUpTo(navController.graph.findStartDestination().id) {
+                            popUpTo(appNavController.graph.findStartDestination().id) {
                                 saveState = true
                             }
                             launchSingleTop = true
                             restoreState = true
                         }
-                        navController.navigate(
+                        appNavController.navigate(
                             destination.route,
                             topLevelNavOptions
                         )
@@ -67,8 +81,8 @@ fun ExpenseManagerApp(
             floatingActionButtonPosition = FabPosition.End
         ) { paddingValues ->
 
-            ExpenseManagerNavHost(
-                navController = navController,
+            AppNavHost(
+                navController = appNavController,
                 modifier = Modifier.padding(paddingValues)
             )
 
@@ -79,5 +93,5 @@ fun ExpenseManagerApp(
 @Preview
 @Composable
 fun PreviewExpenseManagerApp() {
-    ExpenseManagerApp(navController = rememberNavController(), rememberDrawerState(initialValue = DrawerValue.Closed), rememberCoroutineScope())
+    ExpenseManagerApp(parentNavController = rememberNavController(), rememberDrawerState(initialValue = DrawerValue.Closed), rememberCoroutineScope())
 }

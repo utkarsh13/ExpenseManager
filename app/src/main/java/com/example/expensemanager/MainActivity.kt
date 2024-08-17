@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
 
             ExpenseManagerTheme(darkTheme = false) {
                 ExpenseManagerApp(
-                    navController = navController,
+                    parentNavController = navController,
                     drawerState = drawerState,
                     coroutineScope = coroutineScope
                 )

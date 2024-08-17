@@ -8,58 +8,39 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.expensemanager.ui.composables.screens.AccountScreen
 import com.example.expensemanager.ui.composables.screens.AnalysisScreen
-import com.example.expensemanager.ui.composables.screens.BackupScreen
 import com.example.expensemanager.ui.composables.screens.CalendarScreen
 import com.example.expensemanager.ui.composables.screens.HomeScreen
-import com.example.expensemanager.ui.composables.screens.SearchScreen
 import com.example.expensemanager.ui.composables.screens.SettingsScreen
 import com.example.expensemanager.utils.RouteConstants
 
 @Composable
-fun ExpenseManagerNavHost(
+fun AppNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
     NavHost(
         navController = navController,
         modifier = modifier,
-        startDestination = AppBottomBarScreens.HOME.route,
+        startDestination = RouteConstants.HOME,
         enterTransition = { fadeIn(animationSpec = tween(200)) },
         exitTransition = { fadeOut(animationSpec = tween(200)) },
     ) {
 
-        composable(AppBottomBarScreens.HOME.route) {
+        composable(RouteConstants.HOME) {
             HomeScreen()
         }
 
-        composable(AppBottomBarScreens.CALENDAR.route) {
+        composable(RouteConstants.CALENDAR) {
             CalendarScreen()
         }
 
-        composable(AppBottomBarScreens.ANALYSIS.route) {
+        composable(RouteConstants.ANALYSIS) {
             AnalysisScreen()
         }
 
-        composable(AppBottomBarScreens.BUDGETS.route) {
+        composable(RouteConstants.BUDGETS) {
             SettingsScreen()
-        }
-
-        composable(AppNavigationDrawerScreen.ACCOUNT.route) {
-            AccountScreen()
-        }
-
-        composable(AppNavigationDrawerScreen.DATA_BACKUP.route) {
-            BackupScreen()
-        }
-
-        composable(AppNavigationDrawerScreen.SETTINGS.route) {
-            SettingsScreen()
-        }
-
-        composable(RouteConstants.SEARCH) {
-            SearchScreen()
         }
 
     }

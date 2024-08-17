@@ -31,13 +31,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.expensemanager.R
+import com.example.expensemanager.utils.RouteConstants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppTopBar(
+    navController: NavHostController,
     drawerState: DrawerState,
     coroutineScope: CoroutineScope,
 ) {
@@ -65,7 +69,9 @@ fun AppTopBar(
             }
         },
         actions = {
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = {
+                navController.navigate(RouteConstants.SEARCH)
+            }) {
                 Icon(
                     imageVector = Icons.Rounded.Search,
                     contentDescription = "Search",
@@ -80,5 +86,5 @@ fun AppTopBar(
 @Preview
 @Composable
 fun PreviewAppTopBar() {
-    AppTopBar(rememberDrawerState(initialValue = DrawerValue.Closed), rememberCoroutineScope())
+    AppTopBar(rememberNavController(), rememberDrawerState(initialValue = DrawerValue.Closed), rememberCoroutineScope())
 }

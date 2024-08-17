@@ -6,6 +6,7 @@ object RouteConstants {
     const val BUDGETS = "budgets"
     const val ANALYSIS = "analysis"
     const val SETTINGS = "settings"
+    const val SEARCH = "search"
     const val ACCOUNT = "account"
     const val DATA_BACKUP = "data_backup"
 }

@@ -39,6 +39,7 @@ fun ExpenseManagerApp(
             modifier = Modifier.fillMaxSize(),
             topBar = {
                 AppTopBar(
+                    navController = navController,
                     drawerState = drawerState,
                     coroutineScope = coroutineScope
                 )

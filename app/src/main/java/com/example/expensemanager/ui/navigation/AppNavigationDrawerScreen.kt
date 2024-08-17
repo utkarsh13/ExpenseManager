@@ -2,6 +2,7 @@ package com.example.expensemanager.ui.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Save
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -29,7 +30,7 @@ enum class AppNavigationDrawerScreen(
         title = R.string.settings,
         route = RouteConstants.SETTINGS,
         icon = Icons.Filled.Settings,
-    )
+    ),
 }
 
 

@@ -5,6 +5,7 @@
     <string name="budgets">Budgets</string>
     <string name="analysis">Analysis</string>
     <string name="settings">Settings</string>
+    <string name="search">Search</string>
     <string name="account">Account</string>
     <string name="data_backup">Data Backup</string>
 </resources>

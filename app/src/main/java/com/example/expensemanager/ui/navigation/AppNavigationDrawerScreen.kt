@@ -2,6 +2,7 @@ package com.example.expensemanager.ui.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Save
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.expensemanager.R
@@ -19,10 +20,16 @@ enum class AppNavigationDrawerScreen(
     ),
 
     DATA_BACKUP(
-        title = R.string.databackup,
+        title = R.string.data_backup,
         route = RouteConstants.DATA_BACKUP,
         icon = Icons.Outlined.Save
     ),
+
+    SETTINGS(
+        title = R.string.settings,
+        route = RouteConstants.SETTINGS,
+        icon = Icons.Filled.Settings,
+    )
 }
 
 

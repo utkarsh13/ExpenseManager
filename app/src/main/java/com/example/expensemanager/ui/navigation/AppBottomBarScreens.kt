@@ -1,17 +1,19 @@
 package com.example.expensemanager.ui.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Analytics
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.RequestPage
+import androidx.compose.material.icons.outlined.Analytics
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.RequestPage
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.expensemanager.R
 import com.example.expensemanager.utils.RouteConstants
 
-enum class AppBottomBarScreen(
+enum class AppBottomBarScreens(
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
     val title: Int,
@@ -29,10 +31,16 @@ enum class AppBottomBarScreen(
         title = R.string.calendar,
         route = RouteConstants.CALENDAR,
     ),
-    SETTINGS(
-        selectedIcon = Icons.Filled.Settings,
-        unselectedIcon = Icons.Outlined.Settings,
-        title = R.string.settings,
-        route = RouteConstants.SETTINGS,
+    ANALYSIS(
+        selectedIcon = Icons.Filled.Analytics,
+        unselectedIcon = Icons.Outlined.Analytics,
+        title = R.string.analysis,
+        route = RouteConstants.ANALYSIS,
+    ),
+    BUDGETS(
+        selectedIcon = Icons.Filled.RequestPage,
+        unselectedIcon = Icons.Outlined.RequestPage,
+        title = R.string.budgets,
+        route = RouteConstants.BUDGETS,
     ),
 }

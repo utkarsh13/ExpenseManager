@@ -18,7 +18,7 @@ import androidx.navigation.navOptions
 import com.example.expensemanager.ui.composables.AppBottomBar
 import com.example.expensemanager.ui.composables.AppNavigationDrawer
 import com.example.expensemanager.ui.composables.AppTopBar
-import com.example.expensemanager.ui.navigation.AppBottomBarScreen
+import com.example.expensemanager.ui.navigation.AppBottomBarScreens
 import com.example.expensemanager.ui.navigation.ExpenseManagerNavHost
 import kotlinx.coroutines.CoroutineScope
 
@@ -45,7 +45,7 @@ fun ExpenseManagerApp(
             },
             bottomBar = {
                 AppBottomBar(
-                    destinations = AppBottomBarScreen.entries,
+                    destinations = AppBottomBarScreens.entries,
                     navController = navController,
                     onNavigationSelected = { destination ->
                         val topLevelNavOptions = navOptions {

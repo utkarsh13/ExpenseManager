@@ -1,6 +1,5 @@
 package com.example.expensemanager.ui.composables
 
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -11,14 +10,14 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.expensemanager.ui.navigation.AppBottomBarScreen
+import com.example.expensemanager.ui.navigation.AppBottomBarScreens
 
 
 @Composable
 fun AppBottomBar(
-    destinations: List<AppBottomBarScreen>,
+    destinations: List<AppBottomBarScreens>,
     navController: NavHostController,
-    onNavigationSelected: (AppBottomBarScreen) -> Unit,
+    onNavigationSelected: (AppBottomBarScreens) -> Unit,
 ) {
     NavigationBar {
         destinations.forEach { destination ->
@@ -43,7 +42,7 @@ fun AppBottomBar(
     }
 }
 
-private fun NavDestination?.isDestinationSelected(destination: AppBottomBarScreen): Boolean {
+private fun NavDestination?.isDestinationSelected(destination: AppBottomBarScreens): Boolean {
     return this?.hierarchy?.any { it.route == destination.route } ?: false
 
 }

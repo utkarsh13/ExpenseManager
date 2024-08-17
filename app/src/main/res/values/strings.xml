@@ -2,7 +2,9 @@
     <string name="app_name">ExpenseManager</string>
     <string name="calendar">Calendar</string>
     <string name="home">Home</string>
+    <string name="budgets">Budgets</string>
+    <string name="analysis">Analysis</string>
     <string name="settings">Settings</string>
     <string name="account">Account</string>
-    <string name="databackup">Data Backup</string>
+    <string name="data_backup">Data Backup</string>
 </resources>

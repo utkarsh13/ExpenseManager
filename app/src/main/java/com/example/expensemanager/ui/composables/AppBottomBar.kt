@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +23,10 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.expensemanager.ui.navigation.AppBottomBarScreens
+import com.example.expensemanager.ui.theme.inversePrimaryLight
+import com.example.expensemanager.ui.theme.inversePrimaryLightMediumContrast
+import com.example.expensemanager.ui.theme.primaryLight
+import com.example.expensemanager.ui.theme.surfaceContainerHighestLightHighContrast
 
 
 @Composable
@@ -34,26 +39,33 @@ fun AppBottomBar(
         modifier = Modifier
             .graphicsLayer {
                 clip = true
-                shape = RoundedCornerShape(16.dp, 16.dp, 0.dp, 0.dp)
                 shadowElevation = 30f
                 ambientShadowColor = Color.Black
-            }
+            },
+        containerColor = Color.White
     ) {
         destinations.forEach { destination ->
             val isSelected =
                 navController.currentBackStackEntryAsState().value?.destination.isDestinationSelected(destination)
             NavigationBarItem(
+                colors = NavigationBarItemDefaults.colors(
+                    indicatorColor = primaryLight.copy(alpha = 0.1f)
+                ),
                 selected = isSelected,
                 onClick = {
                     onNavigationSelected(destination)
                 },
                 label = {
-                    Text(text = stringResource(id = destination.title))
+                    Text(
+                        text = stringResource(id = destination.title),
+                        color = if (isSelected) primaryLight else Color.Unspecified,
+                    )
                 },
                 icon = {
                     Icon(
                         imageVector = if (isSelected) destination.selectedIcon else destination.unselectedIcon,
                         contentDescription = "${destination.title} icon",
+                        tint = if (isSelected) primaryLight else Color.Unspecified,
                     )
                 }
             )

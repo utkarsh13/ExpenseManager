@@ -1,10 +1,14 @@
 package com.example.expensemanager.ui.composables.screens
 
+import android.text.format.DateFormat
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -39,7 +44,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.expensemanager.data.calendar.WeekDay
 import com.example.expensemanager.ui.theme.AppTypography
+import com.example.expensemanager.ui.theme.Blue
 import com.example.expensemanager.ui.theme.Blue10
+import com.example.expensemanager.ui.theme.LightGrey
+import com.example.expensemanager.ui.theme.LightGrey35
+import com.example.expensemanager.ui.theme.WhiteSmoke
+import java.util.Date
+import kotlin.random.Random
 
 @Composable
 fun CalendarScreen() {
@@ -49,13 +60,13 @@ fun CalendarScreen() {
         ) {
             MonthSelector()
             WeekDays()
+            CalendarUI()
         }
     }
 }
 
 @Composable
 fun MonthSelector() {
-    val screenWidth = LocalConfiguration.current.screenWidthDp
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -78,12 +89,13 @@ fun MonthSelector() {
                 .background(Blue10)
                 .height(32.dp)
         ) {
+            val monthString = DateFormat.format("MMMM yyyy", Date()).toString().uppercase()
             Text(
-                text = "AUGUST",
+                text = monthString,
                 style = AppTypography.titleSmall,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Medium,
-                modifier = Modifier.width((LocalConfiguration.current.screenWidthDp/2).dp),
+                modifier = Modifier.width((LocalConfiguration.current.screenWidthDp / 2).dp),
                 textAlign = TextAlign.Center
             )
         }
@@ -119,7 +131,9 @@ private fun WeekDays() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .height(28.dp)
             .padding(horizontal = 8.dp)
+            .padding(bottom = 12.dp)
             .onGloballyPositioned { coordinates ->
                 widthDp = with(localDensity) { coordinates.size.width.toDp() }
             },
@@ -137,6 +151,47 @@ private fun WeekDays() {
                 textAlign = TextAlign.Center,
                 modifier = Modifier.width(itemWidth)
             )
+        }
+    }
+}
+
+@Composable
+fun CalendarUI() {
+    val localDensity = LocalDensity.current
+    var widthDp by remember { mutableStateOf(0.dp) }
+    var heightDp by remember { mutableStateOf(0.dp) }
+    val random = Random.nextInt(30)
+    var idx = 0
+    Column(
+        Modifier
+            .padding(horizontal = 8.dp)
+            .padding(bottom = 16.dp)
+            .fillMaxSize()
+            .onGloballyPositioned { coordinates ->
+                widthDp = with(localDensity) { coordinates.size.width.toDp() }
+                heightDp = with(localDensity) { coordinates.size.height.toDp() }
+            }
+    ) {
+        for (colIdx in 1..6) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                for (rowIdx in 1..7) {
+                    val color = if (random == idx) Blue10 else Color.White
+                    val borderColor = if (random == idx) Blue.copy(0.15f) else LightGrey35
+                    Box(
+                        modifier = Modifier
+                            .size(widthDp / 7, heightDp/6)
+                            .padding(4.dp)
+                            .background(color = color, shape = RoundedCornerShape(8.dp))
+                            .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(8.dp))
+                    ) {
+
+                    }
+                    idx++
+                }
+            }
         }
     }
 }

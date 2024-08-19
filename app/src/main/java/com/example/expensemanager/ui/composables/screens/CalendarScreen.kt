@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,6 +18,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.TrendingDown
+import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -44,11 +45,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.expensemanager.data.calendar.WeekDay
 import com.example.expensemanager.ui.theme.AppTypography
-import com.example.expensemanager.ui.theme.Blue
-import com.example.expensemanager.ui.theme.Blue10
-import com.example.expensemanager.ui.theme.LightGrey
+import com.example.expensemanager.ui.theme.BlueNavy
+import com.example.expensemanager.ui.theme.BlueAlice
+import com.example.expensemanager.ui.theme.GreenMint
+import com.example.expensemanager.ui.theme.GreenShamrock
 import com.example.expensemanager.ui.theme.LightGrey35
-import com.example.expensemanager.ui.theme.WhiteSmoke
+import com.example.expensemanager.ui.theme.RedCoral
+import com.example.expensemanager.ui.theme.RedPeep
 import java.util.Date
 import kotlin.random.Random
 
@@ -56,9 +59,12 @@ import kotlin.random.Random
 fun CalendarScreen() {
     BaseScreen {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .fillMaxSize(),
         ) {
             MonthSelector()
+            IncomeExpenseSummary()
             WeekDays()
             CalendarUI()
         }
@@ -70,9 +76,7 @@ fun MonthSelector() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(
-                bottom = 16.dp
-            ),
+            .padding(bottom = 20.dp),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -85,9 +89,15 @@ fun MonthSelector() {
             ),
             contentPadding = PaddingValues(0.dp),
             modifier = Modifier
-                .clip(RoundedCornerShape(20.dp))
-                .background(Blue10)
+                .shadow(
+                    elevation = 4.dp,
+                    spotColor = BlueNavy,
+                    shape = RoundedCornerShape(16.dp)
+                )
+                .clip(RoundedCornerShape(16.dp))
+                .background(BlueAlice)
                 .height(32.dp)
+
         ) {
             val monthString = DateFormat.format("MMMM yyyy", Date()).toString().uppercase()
             Text(
@@ -122,6 +132,72 @@ private fun ArrowButton(imageVector: ImageVector) {
     }
 }
 
+
+@Composable
+fun IncomeExpenseSummary() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 18.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        SummaryCard(
+            imageVector = Icons.Filled.TrendingUp,
+            bgColor = GreenMint,
+            iconColor = GreenShamrock,
+            amount = "₹2,45,550"
+        )
+        SummaryCard(
+            imageVector = Icons.Filled.TrendingDown,
+            bgColor = RedPeep,
+            iconColor = RedCoral,
+            amount = "₹45,890"
+        )
+    }
+}
+
+@Composable
+private fun SummaryCard(
+    imageVector: ImageVector,
+    bgColor: Color,
+    iconColor: Color,
+    amount: String
+) {
+    val width = LocalConfiguration.current.screenWidthDp * 0.36
+    Row(
+        modifier = Modifier
+            .shadow(
+                elevation = 8.dp,
+                spotColor = iconColor.copy(0.8f),
+                shape = RoundedCornerShape(8.dp)
+            )
+            .height(40.dp)
+            .width(width.dp)
+            .background(color = Color.White, shape = RoundedCornerShape(8.dp))
+            .padding(horizontal = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(20.dp)
+                .background(
+                    color = bgColor,
+                    shape = RoundedCornerShape(10.dp)
+                )
+        ) {
+            Icon(
+                imageVector = imageVector,
+                contentDescription = "Income",
+                tint = iconColor,
+                modifier = Modifier.padding(3.dp)
+            )
+        }
+
+        Text(text = amount, color = iconColor, style = AppTypography.labelMedium)
+    }
+}
+
 @Composable
 private fun WeekDays() {
     val localDensity = LocalDensity.current
@@ -133,7 +209,6 @@ private fun WeekDays() {
             .fillMaxWidth()
             .height(28.dp)
             .padding(horizontal = 8.dp)
-            .padding(bottom = 12.dp)
             .onGloballyPositioned { coordinates ->
                 widthDp = with(localDensity) { coordinates.size.width.toDp() }
             },
@@ -165,7 +240,7 @@ fun CalendarUI() {
     Column(
         Modifier
             .padding(horizontal = 8.dp)
-            .padding(bottom = 16.dp)
+            .padding(bottom = 10.dp)
             .fillMaxSize()
             .onGloballyPositioned { coordinates ->
                 widthDp = with(localDensity) { coordinates.size.width.toDp() }
@@ -178,14 +253,18 @@ fun CalendarUI() {
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 for (rowIdx in 1..7) {
-                    val color = if (random == idx) Blue10 else Color.White
-                    val borderColor = if (random == idx) Blue.copy(0.15f) else LightGrey35
+                    val color = if (random == idx) BlueAlice else Color.White
+                    val borderColor = if (random == idx) BlueNavy.copy(0.15f) else LightGrey35
                     Box(
                         modifier = Modifier
-                            .size(widthDp / 7, heightDp/6)
+                            .size(widthDp / 7, heightDp / 6)
                             .padding(4.dp)
                             .background(color = color, shape = RoundedCornerShape(8.dp))
-                            .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(8.dp))
+                            .border(
+                                width = 1.dp,
+                                color = borderColor,
+                                shape = RoundedCornerShape(8.dp)
+                            )
                     ) {
 
                     }

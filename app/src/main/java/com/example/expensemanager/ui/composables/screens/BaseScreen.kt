@@ -15,7 +15,7 @@ fun BaseScreen(content: @Composable () -> Unit) {
         color = WhiteSmoke,
         modifier = Modifier
             .background(WhiteSmoke)
-            .padding(top = 16.dp)
+            .padding(top = 12.dp)
             .fillMaxSize(),
     ) {
         content()

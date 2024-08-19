@@ -15,7 +15,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.expensemanager.ui.navigation.AppBottomBarScreens
-import com.example.expensemanager.ui.theme.Blue10
+import com.example.expensemanager.ui.theme.BlueAlice
 import com.example.expensemanager.ui.theme.primaryLight
 
 
@@ -39,7 +39,7 @@ fun AppBottomBar(
                 navController.currentBackStackEntryAsState().value?.destination.isDestinationSelected(destination)
             NavigationBarItem(
                 colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = Blue10
+                    indicatorColor = BlueAlice
                 ),
                 selected = isSelected,
                 onClick = {

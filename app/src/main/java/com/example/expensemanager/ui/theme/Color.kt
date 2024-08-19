@@ -3,8 +3,12 @@ package com.example.expensemanager.ui.theme
 import androidx.compose.ui.graphics.Color
 
 
-val Blue = Color(0xFF0666EB)
-val Blue10 = Color(0xFFE6EFFD)
+val BlueNavy = Color(0xFF0666EB)
+val BlueAlice = Color(0xFFE6EFFD)
+val GreenShamrock = Color(0xFF009F5C)
+val GreenMint = Color(0xFFCAEAD9)
+val RedCoral = Color(0xFFFD3C4A)
+val RedPeep = Color(0xFFFDDDDD)
 val LightGrey35 = Color(0xFFD9D9D9).copy(alpha = 0.35f)
 val LightGrey = Color(0xFFD9D9D9)
 val DarkGrey = Color(0xFF919191)

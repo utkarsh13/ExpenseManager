@@ -22,7 +22,7 @@ fun AppNavHost(
     NavHost(
         navController = navController,
         modifier = modifier,
-        startDestination = RouteConstants.HOME,
+        startDestination = RouteConstants.CALENDAR,
         enterTransition = { fadeIn(animationSpec = tween(200)) },
         exitTransition = { fadeOut(animationSpec = tween(200)) },
     ) {

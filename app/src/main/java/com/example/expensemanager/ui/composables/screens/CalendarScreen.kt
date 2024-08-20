@@ -52,6 +52,10 @@ import com.example.expensemanager.ui.theme.GreenShamrock
 import com.example.expensemanager.ui.theme.LightGrey35
 import com.example.expensemanager.ui.theme.RedCoral
 import com.example.expensemanager.ui.theme.RedPeep
+import com.example.expensemanager.ui.theme.slate45
+import com.example.expensemanager.ui.theme.slateAlpha05
+import com.example.expensemanager.ui.theme.slateAlpha15
+import com.example.expensemanager.ui.theme.slateAlpha30
 import java.util.Date
 import kotlin.random.Random
 
@@ -60,7 +64,7 @@ fun CalendarScreen() {
     BaseScreen {
         Column(
             modifier = Modifier
-                .padding(top = 4.dp)
+                .padding(top = 12.dp)
                 .fillMaxSize(),
         ) {
             MonthSelector()
@@ -90,12 +94,12 @@ fun MonthSelector() {
             contentPadding = PaddingValues(0.dp),
             modifier = Modifier
                 .shadow(
-                    elevation = 4.dp,
+                    elevation = 12.dp,
                     spotColor = BlueNavy,
                     shape = RoundedCornerShape(16.dp)
                 )
                 .clip(RoundedCornerShape(16.dp))
-                .background(BlueAlice)
+                .background(BlueNavy)
                 .height(32.dp)
 
         ) {
@@ -104,9 +108,10 @@ fun MonthSelector() {
                 text = monthString,
                 style = AppTypography.titleSmall,
                 fontSize = 13.sp,
-                fontWeight = FontWeight.Medium,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier.width((LocalConfiguration.current.screenWidthDp / 2).dp),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.White
             )
         }
         ArrowButton(Icons.Filled.KeyboardArrowRight)
@@ -132,7 +137,6 @@ private fun ArrowButton(imageVector: ImageVector) {
     }
 }
 
-
 @Composable
 fun IncomeExpenseSummary() {
     Row(
@@ -145,13 +149,13 @@ fun IncomeExpenseSummary() {
             imageVector = Icons.Filled.TrendingUp,
             bgColor = GreenMint,
             iconColor = GreenShamrock,
-            amount = "₹2,45,550"
+            amount = "₹0"
         )
         SummaryCard(
             imageVector = Icons.Filled.TrendingDown,
             bgColor = RedPeep,
             iconColor = RedCoral,
-            amount = "₹45,890"
+            amount = "₹0"
         )
     }
 }
@@ -253,17 +257,24 @@ fun CalendarUI() {
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 for (rowIdx in 1..7) {
+                    val cornerRadius = 10.dp
                     val color = if (random == idx) BlueAlice else Color.White
-                    val borderColor = if (random == idx) BlueNavy.copy(0.15f) else LightGrey35
+                    val borderColor = if (random == idx) BlueNavy.copy(0.2f) else slateAlpha05
+                    val shadowElevation = if (random == idx) 8.dp else 0.dp
                     Box(
                         modifier = Modifier
                             .size(widthDp / 7, heightDp / 6)
                             .padding(4.dp)
-                            .background(color = color, shape = RoundedCornerShape(8.dp))
+                            .shadow(
+                                elevation = shadowElevation,
+                                spotColor = borderColor,
+                                shape = RoundedCornerShape(cornerRadius)
+                            )
+                            .background(color = color, shape = RoundedCornerShape(cornerRadius))
                             .border(
                                 width = 1.dp,
                                 color = borderColor,
-                                shape = RoundedCornerShape(8.dp)
+                                shape = RoundedCornerShape(cornerRadius)
                             )
                     ) {
 

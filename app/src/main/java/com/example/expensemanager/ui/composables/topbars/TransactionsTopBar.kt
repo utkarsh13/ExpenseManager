@@ -2,24 +2,19 @@ package com.example.expensemanager.ui.composables.topbars
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FilterAlt
 import androidx.compose.material.icons.rounded.ArrowDropDown
-import androidx.compose.material.icons.rounded.Filter
-import androidx.compose.material.icons.rounded.FilterAlt
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -28,19 +23,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.expensemanager.ui.theme.AppTypography
 import com.example.expensemanager.ui.theme.WhiteSmoke
-import com.example.expensemanager.ui.theme.slateAlpha05
-import com.example.expensemanager.ui.theme.slateAlpha15
-import com.example.expensemanager.ui.theme.slateAlpha92
+import com.example.expensemanager.ui.theme.blackAlpha05
+import com.example.expensemanager.ui.theme.blackAlpha92
 import com.example.expensemanager.utils.RouteConstants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -59,7 +49,7 @@ fun TransactionsTopBar(
         title = {
             Row(
                 modifier = Modifier
-                    .background(slateAlpha05, shape = RoundedCornerShape(8.dp))
+                    .background(blackAlpha05, shape = RoundedCornerShape(8.dp))
                     .padding(vertical = 4.dp)
                     .padding(start = 12.dp, end = 8.dp),
                 horizontalArrangement = Arrangement.Start,
@@ -72,7 +62,7 @@ fun TransactionsTopBar(
                 Icon(
                     imageVector = Icons.Rounded.ArrowDropDown,
                     contentDescription = "Drop Down",
-                    tint = slateAlpha92,
+                    tint = blackAlpha92,
                 )
             }
         },
@@ -96,7 +86,7 @@ fun TransactionsTopBar(
                 Icon(
                     imageVector = Icons.Outlined.FilterAlt,
                     contentDescription = "Filter",
-                    tint = slateAlpha92,
+                    tint = blackAlpha92,
                 )
             }
             IconButton(onClick = {
@@ -105,7 +95,7 @@ fun TransactionsTopBar(
                 Icon(
                     imageVector = Icons.Rounded.Search,
                     contentDescription = "Search",
-                    tint = slateAlpha92,
+                    tint = blackAlpha92,
                 )
             }
         }

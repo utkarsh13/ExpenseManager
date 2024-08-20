@@ -44,7 +44,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.expensemanager.data.calendar.WeekDay
-import com.example.expensemanager.ui.composables.screens.BaseScreen
 import com.example.expensemanager.ui.theme.AppTypography
 import com.example.expensemanager.ui.theme.BlueNavy
 import com.example.expensemanager.ui.theme.BlueAlice
@@ -52,7 +51,7 @@ import com.example.expensemanager.ui.theme.GreenMint
 import com.example.expensemanager.ui.theme.GreenShamrock
 import com.example.expensemanager.ui.theme.RedCoral
 import com.example.expensemanager.ui.theme.RedPeep
-import com.example.expensemanager.ui.theme.slateAlpha05
+import com.example.expensemanager.ui.theme.blackAlpha05
 import java.util.Date
 import kotlin.random.Random
 
@@ -254,7 +253,7 @@ fun CalendarUI() {
                 for (rowIdx in 1..7) {
                     val cornerRadius = 10.dp
                     val color = if (random == idx) BlueAlice else Color.White
-                    val borderColor = if (random == idx) BlueNavy.copy(0.2f) else slateAlpha05
+                    val borderColor = if (random == idx) BlueNavy.copy(0.2f) else blackAlpha05
                     val shadowElevation = if (random == idx) 8.dp else 0.dp
                     Box(
                         modifier = Modifier

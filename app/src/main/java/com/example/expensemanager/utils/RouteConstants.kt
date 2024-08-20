@@ -6,7 +6,7 @@ object RouteConstants {
 
     // Base routes
     const val HOME = "home"
-    const val CALENDAR = "calendar"
+    const val TRANSACTIONS = "transactions̈̈"
     const val BUDGETS = "budgets"
     const val ANALYSIS = "analysis"
 

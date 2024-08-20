@@ -61,13 +61,6 @@ fun AppBase(
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            topBar = {
-                AppTopBar(
-                    navController = parentNavController,
-                    drawerState = drawerState,
-                    coroutineScope = coroutineScope
-                )
-            },
             bottomBar = {
                 AppBottomBar(
                     destinations = AppBottomBarScreens.entries,
@@ -100,7 +93,10 @@ fun AppBase(
         ) { paddingValues ->
 
             AppNavHost(
+                parentNavController = parentNavController,
                 navController = appNavController,
+                drawerState = drawerState,
+                coroutineScope = coroutineScope,
                 modifier = Modifier.padding(paddingValues)
             )
 

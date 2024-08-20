@@ -4,10 +4,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Analytics
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Receipt
 import androidx.compose.material.icons.filled.RequestPage
 import androidx.compose.material.icons.outlined.Analytics
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Receipt
 import androidx.compose.material.icons.outlined.RequestPage
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.expensemanager.R
@@ -25,11 +27,11 @@ enum class AppBottomBarScreens(
         title = R.string.home,
         route = RouteConstants.HOME,
     ),
-    CALENDAR(
-        selectedIcon = Icons.Filled.DateRange,
-        unselectedIcon = Icons.Outlined.DateRange,
-        title = R.string.calendar,
-        route = RouteConstants.CALENDAR,
+    TRANSACTIONS(
+        selectedIcon = Icons.Filled.Receipt,
+        unselectedIcon = Icons.Outlined.Receipt,
+        title = R.string.transactions,
+        route = RouteConstants.TRANSACTIONS,
     ),
     ANALYSIS(
         selectedIcon = Icons.Filled.Analytics,

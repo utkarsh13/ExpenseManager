@@ -10,10 +10,10 @@ import androidx.compose.ui.unit.dp
 import com.example.expensemanager.ui.theme.WhiteSmoke
 
 @Composable
-fun BaseScreen(content: @Composable () -> Unit) {
+fun BaseScreen(modifier: Modifier, content: @Composable () -> Unit) {
     Surface(
         color = WhiteSmoke,
-        modifier = Modifier
+        modifier = modifier
             .background(WhiteSmoke)
             .fillMaxSize(),
     ) {

@@ -1,4 +1,4 @@
-package com.example.expensemanager.ui.composables.screens
+package com.example.expensemanager.ui.composables.screens.transactions
 
 import android.text.format.DateFormat
 import androidx.compose.foundation.background
@@ -44,34 +44,29 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.expensemanager.data.calendar.WeekDay
+import com.example.expensemanager.ui.composables.screens.BaseScreen
 import com.example.expensemanager.ui.theme.AppTypography
 import com.example.expensemanager.ui.theme.BlueNavy
 import com.example.expensemanager.ui.theme.BlueAlice
 import com.example.expensemanager.ui.theme.GreenMint
 import com.example.expensemanager.ui.theme.GreenShamrock
-import com.example.expensemanager.ui.theme.LightGrey35
 import com.example.expensemanager.ui.theme.RedCoral
 import com.example.expensemanager.ui.theme.RedPeep
-import com.example.expensemanager.ui.theme.slate45
 import com.example.expensemanager.ui.theme.slateAlpha05
-import com.example.expensemanager.ui.theme.slateAlpha15
-import com.example.expensemanager.ui.theme.slateAlpha30
 import java.util.Date
 import kotlin.random.Random
 
 @Composable
-fun CalendarScreen() {
-    BaseScreen {
-        Column(
-            modifier = Modifier
-                .padding(top = 12.dp)
-                .fillMaxSize(),
-        ) {
-            MonthSelector()
-            IncomeExpenseSummary()
-            WeekDays()
-            CalendarUI()
-        }
+fun CalendarView() {
+    Column(
+        modifier = Modifier
+            .padding(top = 12.dp)
+            .fillMaxSize(),
+    ) {
+        MonthSelector()
+        IncomeExpenseSummary()
+        WeekDays()
+        CalendarUI()
     }
 }
 
@@ -288,6 +283,6 @@ fun CalendarUI() {
 
 @Preview
 @Composable
-private fun PreviewCalendarScreen() {
-    CalendarScreen()
+private fun PreviewCalendarView() {
+    CalendarView()
 }

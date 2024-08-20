@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -20,6 +21,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.expensemanager.ui.navigation.AppBottomBarScreens
+import com.example.expensemanager.ui.theme.AppTypography
 import com.example.expensemanager.ui.theme.BlueAlice
 import com.example.expensemanager.ui.theme.BlueNavy
 import com.example.expensemanager.ui.theme.DarkGrey
@@ -60,6 +62,9 @@ fun AppBottomBar(
                     Text(
                         text = stringResource(id = destination.title),
                         color = if (isSelected) BlueNavy else slate45,
+                        style = AppTypography.labelSmall,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                 },
                 icon = {

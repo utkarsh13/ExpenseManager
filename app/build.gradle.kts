@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("kotlin-kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -76,6 +78,8 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
+    implementation(libs.androidx.hilt.android)
+    kapt(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
     // Coil

@@ -44,7 +44,7 @@ val yellow3 = Color(0xFFD07D00)
 val earth1 = Color(0xFFDCC54D)
 val earth2 = Color(0xFFF3EBC0)
 val earth3 = Color(0xFFB08A00)
-val errorRed1 = Color(0xFFE53554)
+val errorRed1 = Color(0xFFFA3C5A)
 val errorRed2 = Color(0xFFFFECEF)
 val errorRed3 = Color(0xFF731A29)
 

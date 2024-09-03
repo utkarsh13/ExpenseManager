@@ -1,10 +1,12 @@
 package com.example.expensemanager.data.calendar
 
 import androidx.compose.ui.graphics.Color
+import com.example.expensemanager.ui.theme.black100
+import com.example.expensemanager.ui.theme.errorRed1
 
 enum class WeekDay(
     val title: String,
-    val color: Color = Color.Unspecified
+    val color: Color = black100
 ) {
     MONDAY(
         title = "Mon",
@@ -26,6 +28,6 @@ enum class WeekDay(
     ),
     SUNDAY(
         title = "Sun",
-        color = Color.Red
+        color = errorRed1
     )
 }

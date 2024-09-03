@@ -12,7 +12,7 @@ import androidx.navigation.compose.composable
 import com.example.expensemanager.ui.composables.screens.AnalysisScreen
 import com.example.expensemanager.ui.composables.screens.HomeScreen
 import com.example.expensemanager.ui.composables.screens.SettingsScreen
-import com.example.expensemanager.ui.composables.screens.transactions.TransactionsScreen
+import com.example.expensemanager.features.transactions.TransactionsScreen
 import com.example.expensemanager.utils.RouteConstants
 import kotlinx.coroutines.CoroutineScope
 
